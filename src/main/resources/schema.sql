@@ -10,10 +10,10 @@ CREATE TABLE Request
 (
     id          BIGINT AUTO_INCREMENT,
     description VARCHAR(255),
-    requestor   BIGINT,
+    requestor_id BIGINT,
     created     TIMESTAMP,
     PRIMARY KEY (id),
-    FOREIGN KEY (requestor) REFERENCES "User" (id)
+    FOREIGN KEY (requestor_id) REFERENCES "User" (id)
 );
 
 CREATE TABLE Item
@@ -22,11 +22,11 @@ CREATE TABLE Item
     name        VARCHAR(255),
     description VARCHAR(255),
     available   BOOLEAN,
-    owner       BIGINT,
-    request     BIGINT,
+    owner_id   BIGINT,
+    request_id BIGINT,
     PRIMARY KEY (id),
-    FOREIGN KEY (owner) REFERENCES "User" (id),
-    FOREIGN KEY (request) REFERENCES Request (id)
+    FOREIGN KEY (owner_id) REFERENCES "User" (id),
+    FOREIGN KEY (request_id) REFERENCES Request (id)
 );
 
 CREATE TABLE Booking
@@ -34,10 +34,10 @@ CREATE TABLE Booking
     id         BIGINT AUTO_INCREMENT,
     time_start TIMESTAMP,
     time_end   TIMESTAMP,
-    item       BIGINT,
-    booker     BIGINT,
+    item_id   BIGINT,
+    booker_id BIGINT,
     status     VARCHAR(255),
     PRIMARY KEY (id),
-    FOREIGN KEY (item) REFERENCES Item (id),
-    FOREIGN KEY (booker) REFERENCES "User" (id)
+    FOREIGN KEY (item_id) REFERENCES Item (id),
+    FOREIGN KEY (booker_id) REFERENCES "User" (id)
 );

@@ -11,7 +11,7 @@ VALUES ('User1', 'user1@example.com'),
        ('User9', 'user9@example.com'),
        ('User10', 'user10@example.com');
 
-INSERT INTO Request (description, requestor, created)
+INSERT INTO Request (description, requestor_id, created)
 VALUES ('Request1', 1, '2023-10-25 21:53:28'),
        ('Request2', 2, '2023-10-26 21:53:28'),
        ('Request3', 3, '2023-10-27 21:53:28'),
@@ -23,7 +23,7 @@ VALUES ('Request1', 1, '2023-10-25 21:53:28'),
        ('Request9', 9, '2023-11-02 21:53:28'),
        ('Request10', 10, '2023-11-03 21:53:28');
 
-INSERT INTO Item (name, description, available, owner, request)
+INSERT INTO Item (name, description, available, owner_id, request_id)
 VALUES ('Item1', 'Description1', TRUE, 1, 1),
        ('Item2', 'Description2', TRUE, 2, 2),
        ('Item3', 'Description3', TRUE, 3, 3),
@@ -35,7 +35,7 @@ VALUES ('Item1', 'Description1', TRUE, 1, 1),
        ('Item9', 'Description9', TRUE, 9, 9),
        ('Item10', 'Description10', TRUE, 10, 10);
 
-INSERT INTO Booking (time_start, time_end, item, booker, status)
+INSERT INTO Booking (time_start, time_end, item_id, booker_id, status)
 VALUES ('2023-10-25 21:53:28', '2023-10-26 21:53:28', 1, 1, 'APPROVED'),
        ('2023-10-26 21:53:28', '2023-10-27 21:53:28', 2, 2, 'APPROVED'),
        ('2023-10-27 21:53:28', '2023-10-28 21:53:28', 3, 3, 'APPROVED'),
