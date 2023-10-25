@@ -9,5 +9,4 @@ public class Request {
     private String description;
     private User requestor;
     private LocalDateTime created;
-
 }

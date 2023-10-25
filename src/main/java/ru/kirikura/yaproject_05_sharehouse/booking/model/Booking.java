@@ -8,11 +8,9 @@ import java.time.LocalDateTime;
 
 public class Booking {
     private long id;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private LocalDateTime timeStart;
+    private LocalDateTime timeEnd;
     private Item item;
     private User booker;
     private Status status;
-
-
 }
