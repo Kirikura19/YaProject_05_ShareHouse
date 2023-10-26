@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Data
 public class Request {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)

@@ -11,6 +11,7 @@ import ru.kirikura.yaproject_05_sharehouse.user.model.User;
 @Data
 public class Item {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String description;
