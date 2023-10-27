@@ -1,8 +1,7 @@
 package ru.kirikura.yaproject_05_sharehouse.booking.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import ru.kirikura.yaproject_05_sharehouse.booking.enums.Status;
 import ru.kirikura.yaproject_05_sharehouse.item.model.Item;
 import ru.kirikura.yaproject_05_sharehouse.user.model.User;
@@ -10,8 +9,10 @@ import ru.kirikura.yaproject_05_sharehouse.user.model.User;
 import java.time.LocalDateTime;
 
 @Entity
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

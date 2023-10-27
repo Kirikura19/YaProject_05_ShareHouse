@@ -2,6 +2,7 @@ package ru.kirikura.yaproject_05_sharehouse.booking.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.kirikura.yaproject_05_sharehouse.booking.dto.BookingRegDto;
 import ru.kirikura.yaproject_05_sharehouse.booking.model.Booking;
 import ru.kirikura.yaproject_05_sharehouse.booking.service.BookingServiceJPA;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequestMapping("/bookings")
 public class BookingController {
     BookingServiceJPA bookingService;
+    private static final String USER_ID = "X-Sharer-User-Id";
 
     @GetMapping()
     public List<Booking> findAll() {
@@ -25,8 +27,8 @@ public class BookingController {
     }
 
     @PostMapping
-    public Booking save(@RequestBody Booking booking) {
-        return bookingService.save(booking);
+    public Booking save(@RequestHeader(USER_ID) Long bookerId, @RequestBody BookingRegDto booking) {
+        return bookingService.save(booking, bookerId);
     }
 
     @PatchMapping
