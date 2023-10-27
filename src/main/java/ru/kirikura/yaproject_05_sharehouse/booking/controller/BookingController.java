@@ -21,9 +21,9 @@ public class BookingController {
         return bookingService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Booking> findById(@PathVariable long id) {
-        return bookingService.findById(id);
+    @GetMapping("/{bookingId}")
+    public Booking findById(@RequestHeader(USER_ID) Long bookerId, @PathVariable long bookingId) {
+        return bookingService.findById(bookingId, bookerId);
     }
 
     @PostMapping
