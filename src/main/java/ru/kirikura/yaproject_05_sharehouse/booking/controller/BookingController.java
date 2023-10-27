@@ -2,6 +2,7 @@ package ru.kirikura.yaproject_05_sharehouse.booking.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.kirikura.yaproject_05_sharehouse.booking.dto.BookingDefaultDto;
 import ru.kirikura.yaproject_05_sharehouse.booking.dto.BookingRegDto;
 import ru.kirikura.yaproject_05_sharehouse.booking.model.Booking;
 import ru.kirikura.yaproject_05_sharehouse.booking.service.BookingServiceJPA;
@@ -20,7 +21,7 @@ public class BookingController {
      */
 
     @GetMapping()
-    public List<Booking> findAllByPersonAndStatus(@RequestHeader(PERSON_ID) Long personId, @RequestParam String status) {
+    public List<BookingDefaultDto> findAllByPersonAndStatus(@RequestHeader(PERSON_ID) Long personId, @RequestParam String status) {
         return bookingService.findAllByPersonAndStatus(personId, status);
     }
 
@@ -28,9 +29,8 @@ public class BookingController {
      * Получение списка бронирований всех вещей текущего пользователя.
      */
 
-
     @GetMapping("/owner")
-    public List<Booking> findAllByItemsByOwner(@RequestHeader(PERSON_ID) Long personId, @RequestParam String status) {
+    public List<BookingDefaultDto> findAllByItemsByOwner(@RequestHeader(PERSON_ID) Long personId, @RequestParam String status) {
         return bookingService.findAllByStatusAndItems_Owner(personId, status);
     }
 
@@ -40,7 +40,7 @@ public class BookingController {
      */
 
     @GetMapping("/{bookingId}")
-    public Booking findById(@RequestHeader(PERSON_ID) Long personId, @PathVariable long bookingId) {
+    public BookingDefaultDto findById(@RequestHeader(PERSON_ID) Long personId, @PathVariable long bookingId) {
         return bookingService.findById(bookingId, personId);
     }
 
@@ -49,17 +49,17 @@ public class BookingController {
      */
 
     @PostMapping
-    public Booking save(@RequestHeader(PERSON_ID) Long personId, @RequestBody BookingRegDto booking) {
+    public BookingDefaultDto save(@RequestHeader(PERSON_ID) Long personId, @RequestBody BookingRegDto booking) {
         return bookingService.save(booking, personId);
     }
 
     @PatchMapping("/{bookingId}")
-    public Booking approve(@RequestHeader(PERSON_ID) Long personId, @PathVariable long bookingId, @RequestParam boolean approved) {
+    public BookingDefaultDto approve(@RequestHeader(PERSON_ID) Long personId, @PathVariable long bookingId, @RequestParam boolean approved) {
         return bookingService.approve(approved, personId, bookingId);
     }
 
     @PatchMapping
-    public Booking update(Booking booking) {
+    public BookingDefaultDto update(Booking booking) {
         return bookingService.update(booking);
     }
 
