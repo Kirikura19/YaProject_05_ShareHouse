@@ -1,10 +1,10 @@
-package ru.kirikura.yaproject_05_sharehouse.user.dto;
+package ru.kirikura.yaproject_05_sharehouse.person.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserDto {
+public class PersonDto {
     private String name;
 }

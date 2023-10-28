@@ -1,17 +1,21 @@
 package ru.kirikura.yaproject_05_sharehouse.booking.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import ru.kirikura.yaproject_05_sharehouse.booking.enums.Status;
 import ru.kirikura.yaproject_05_sharehouse.item.model.Item;
-import ru.kirikura.yaproject_05_sharehouse.user.model.User;
+import ru.kirikura.yaproject_05_sharehouse.person.model.Person;
 
 import java.time.LocalDateTime;
 
 @Entity
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +24,13 @@ public class Booking {
     private LocalDateTime timeStart;
     @Column(name = "time_end")
     private LocalDateTime timeEnd;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User booker;
+    //booker
+    @ManyToOne()
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;
     @Enumerated(EnumType.STRING)
     private Status status;
 }
