@@ -16,6 +16,7 @@ public class BookingController {
     BookingServiceJPA bookingService;
     private static final String PERSON_ID = "X-Sharer-Person-Id";
 
+
     /*
      * Получение списка всех бронирований текущего пользователя
      */
