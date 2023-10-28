@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.kirikura.yaproject_05_sharehouse.person.exception.PersonNotFoundException;
 import ru.kirikura.yaproject_05_sharehouse.person.model.Person;
 import ru.kirikura.yaproject_05_sharehouse.person.repository.PersonRepository;
+import ru.kirikura.yaproject_05_sharehouse.person.validation.PersonValidation;
 
 import java.util.List;
 
@@ -18,8 +19,7 @@ public class PersonServiceJPA {
     }
 
     public Person findById(long personId) {
-        return personRepository.findById(personId).orElseThrow(()
-                -> new PersonNotFoundException("Person not found"));
+        return PersonValidation.checkIsUserExists(personId);
     }
 
     public Person save(Person person) {

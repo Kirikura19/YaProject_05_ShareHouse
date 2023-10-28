@@ -20,7 +20,7 @@ public class ItemControllerJpa {
     }
 
     @GetMapping("/{id}")
-    public Optional<Item> findById(@PathVariable long id) {
+    public Item findById(@PathVariable long id) {
         return itemService.findById(id);
     }
 

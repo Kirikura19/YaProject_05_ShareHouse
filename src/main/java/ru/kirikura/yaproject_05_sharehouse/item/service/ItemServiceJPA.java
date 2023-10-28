@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.kirikura.yaproject_05_sharehouse.item.model.Item;
 import ru.kirikura.yaproject_05_sharehouse.item.repository.ItemRepository;
+import ru.kirikura.yaproject_05_sharehouse.item.validation.ItemValidation;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +17,8 @@ public class ItemServiceJPA {
         return itemRepository.findAll();
     }
 
-    public Optional<Item> findById(long id) {
-        return itemRepository.findById(id);
+    public Item findById(long id) {
+        return ItemValidation.checkIsItemExists(id);
     }
 
     public Item save(Item item) {
