@@ -10,6 +10,7 @@ public class BookerMapperImpl implements BookerMapper {
     @Override
     public BookingDefaultDto toBookingDefaultDto(Booking booking) {
         return BookingDefaultDto.builder()
+                .id(booking.getId())
                 .timeStart(booking.getTimeStart())
                 .timeEnd(booking.getTimeEnd())
                 .item(booking.getItem())
