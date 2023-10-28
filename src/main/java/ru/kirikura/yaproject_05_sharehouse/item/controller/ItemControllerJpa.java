@@ -2,21 +2,23 @@ package ru.kirikura.yaproject_05_sharehouse.item.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.kirikura.yaproject_05_sharehouse.item.dto.ItemDateDto;
 import ru.kirikura.yaproject_05_sharehouse.item.model.Item;
 import ru.kirikura.yaproject_05_sharehouse.item.service.ItemServiceJPA;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/items")
 public class ItemControllerJpa {
     ItemServiceJPA itemService;
+    private static final String PERSON_ID = "X-Sharer-Person-Id";
+
 
     @GetMapping()
-    public List<Item> findAll() {
-        return itemService.findAll();
+    public List<ItemDateDto> findAll(@RequestHeader(PERSON_ID) long personId) {
+        return itemService.findAll(personId);
     }
 
     @GetMapping("/{id}")
