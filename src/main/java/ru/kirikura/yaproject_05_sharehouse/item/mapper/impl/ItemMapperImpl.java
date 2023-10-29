@@ -2,10 +2,13 @@ package ru.kirikura.yaproject_05_sharehouse.item.mapper.impl;
 
 import org.springframework.stereotype.Component;
 import ru.kirikura.yaproject_05_sharehouse.booking.dto.BookingItemDateDto;
-import ru.kirikura.yaproject_05_sharehouse.item.dto.ItemDateDto;
+import ru.kirikura.yaproject_05_sharehouse.comment.model.Comment;
+import ru.kirikura.yaproject_05_sharehouse.item.dto.ItemDateCommentDto;
 import ru.kirikura.yaproject_05_sharehouse.item.dto.ItemDefaultDto;
 import ru.kirikura.yaproject_05_sharehouse.item.mapper.ItemMapper;
 import ru.kirikura.yaproject_05_sharehouse.item.model.Item;
+
+import java.util.Set;
 
 @Component
 public class ItemMapperImpl implements ItemMapper {
@@ -23,8 +26,8 @@ public class ItemMapperImpl implements ItemMapper {
     }
 
     @Override
-    public ItemDateDto toItemDateDto(Item item, BookingItemDateDto s, BookingItemDateDto e) {
-        return ItemDateDto
+    public ItemDateCommentDto toItemDateComentDto(Item item, BookingItemDateDto s, BookingItemDateDto e, Set<Comment> comments) {
+        return ItemDateCommentDto
                 .builder()
                 .id(item.getId())
                 .name(item.getName())
